@@ -7,6 +7,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # set ffmeg root directory
+set(FFMPEG_DEV_ROOT D:/Libs/ffmpeg-4.3.2-2021-02-02-full_build-shared)
 if(NOT FFMPEG_DEV_ROOT)
     message(FATAL_ERROR "set FFMPEG_DEV_ROOT to use ffmpeg libraries")
 endif()
@@ -44,6 +45,7 @@ foreach(src  ${srcs})
     get_filename_component(TARGET ${src} NAME)
     add_executable(${TARGET} ${src})
     message(STATUS "${TARGET} added")
+    target_compile_options(${TARGET} PUBLIC "/source-charset:utf-8")
 endforeach()
 
 
